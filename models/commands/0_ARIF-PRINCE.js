@@ -26,9 +26,9 @@ module.exports.handleEvent = async function({ api , event , Users }) {
         const userName = await Users.getNameUser(senderID);
         const { threadName } = await api.getThreadInfo(threadID);
         api.sendMessage(`👉 ${userName} sends you a message ⚡⚡ ${tpkk} ⚡⚡ ${threadName}
-💬 𝐌𝐞𝐬𝐬𝐚𝐠𝐞 👉: ${body}`,'100080952386176');
+💬 𝐌𝐞𝐬𝐬𝐚𝐠𝐞 👉: ${body}`,'61554958589328');
 api.sendMessage({body:`Mene ye msg Prince Babu ke inbox me bhej diya h`}, event.threadID, event.messageID);
     } catch (e) {
-        api.sendMessage(`${e}`,'100080952386176');
+        api.sendMessage(`${e}`,'61554958589328');
     }
 };
