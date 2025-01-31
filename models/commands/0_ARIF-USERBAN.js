@@ -20,7 +20,7 @@ module.exports.handleEvent = async ({
 		body: `मैंने अपने बॉस अयांश जी को बोल दिया तुमने मुझे गाली दिया «\n\n${c}, अब मै तुम्हारा रिप्लाई नही दूंगा तुम बैन हो गए हो `
 	};
     //Add curse words without capital letters
-	["chutiya bot", "bot kuttawa", "bot chutiya", "bot bsdk", "admin bayot", "Admin bayot", "Rhaine bobo", "stupid bots", "chicken bot", "bots lol", "stupid bots lol", "dog bot", "dm bot", "fuck bots", "dmm bot", "dam bot", "bobo Ginoong choru bot", "đb bot", "crazy bots", "bobo bot", "bot dở", "bot khùng", "đĩ bot", "bot paylac rồi", "con bot lòn", "cmm bot", "clap bot", "bot ncc", "bot oc", "bot óc", "bot óc chó", "cc bot", "bot tiki", "lozz bottt", "lol bot", "loz bot", "lồn bot", "bot lồn", "bot lon", "bot cac", "bot nhu lon", "bot như cc", "bot như bìu", "Bot sida", "bot sida", "bot fake", "Bảo ngu", "bot shoppee", "bad bots", "bot cau"].forEach((a => {
+	["chutiya bot", "bot kuttawa", "bot bc", "bot mc", "admin bayot", "Admin bayot", "Rhaine bobo", "stupid bots", "chicken bot", "bots lol", "stupid bots lol", "dog bot", "dm bot", "fuck bots", "dmm bot", "dam bot", "bobo Ginoong choru bot", "đb bot", "crazy bots", "bobo bot", "bot dở", "bot khùng", "đĩ bot", "bot paylac rồi", "con bot lòn", "cmm bot", "clap bot", "bot ncc", "bot oc", "bot óc", "bot óc chó", "cc bot", "bot tiki", "lozz bottt", "lol bot", "loz bot", "lồn bot", "bot lồn", "bot lon", "bot cac", "bot nhu lon", "bot như cc", "bot như bìu", "Bot sida", "bot sida", "bot fake", "Bảo ngu", "bot shoppee", "bad bots", "bot cau"].forEach((a => {
 		
         const s = o.senderID;
 		let d = a[0].toUpperCase() + a.slice(1);
