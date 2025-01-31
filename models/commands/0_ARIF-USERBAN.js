@@ -5,11 +5,11 @@ module.exports.config = {
 	credits: "𝐏𝐫𝐢𝐲𝐚𝐧𝐬𝐡 𝐑𝐚𝐣𝐩𝐮𝐭",
 	description: "Permanently ban members from the group (Remember to set the qtv bot)\nAuthor: 𝐏𝐫𝐢𝐲𝐚𝐧𝐬𝐡 𝐑𝐚𝐣𝐩𝐮𝐭",
 	commandCategory: "group",
-	usages: "[key]",
+	usages: "[ban]",
 	cooldowns: 5,
 	info: [
 		{
-			key: '[tag] or [reply message] "reason"',
+			key: '[ban] or [@mention] "reason"',
 			prompt: '1 more warning user',
 			type: '',
 			example: 'ban [tag] "reason for warning"'
