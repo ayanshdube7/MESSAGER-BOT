@@ -1,6 +1,6 @@
 module.exports.config = {
     name: "hug2",
-    version: "3.1.1",
+    version: "7.3.1",
     hasPermssion: 0,
     credits: "𝐏𝐫𝐢𝐲𝐚𝐧𝐬𝐡 𝐑𝐚𝐣𝐩𝐮𝐭",
     description: "Hug 🥰",
@@ -20,9 +20,9 @@ module.exports.onLoad = async() => {
     const { existsSync, mkdirSync } = global.nodemodule["fs-extra"];
     const { downloadFile } = global.utils;
     const dirMaterial = __dirname + `/cache/canvas/`;
-    const path = resolve(__dirname, 'cache/canvas', 'hugv2.png');
+    const path = resolve(__dirname, 'cache/canvas', 'hugv3.png');
     if (!existsSync(dirMaterial + "canvas")) mkdirSync(dirMaterial, { recursive: true });
-    if (!existsSync(path)) await downloadFile("https://i.ibb.co/zRdZJzG/1626342271-28-kartinkin-com-p-anime-obnimashki-v-posteli-anime-krasivo-30.jpg", path);
+    if (!existsSync(path)) await downloadFile("https://i.imgur.com/7lPqHjw.jpg", path);
 }
 
 async function makeImage({ one, two }) {
@@ -32,7 +32,7 @@ async function makeImage({ one, two }) {
     const jimp = global.nodemodule["jimp"];
     const __root = path.resolve(__dirname, "cache", "canvas");
 
-    let batgiam_img = await jimp.read(__root + "/hugv2.png");
+    let batgiam_img = await jimp.read(__root + "/hugv3.png");
     let pathImg = __root + `/batman${one}_${two}.png`;
     let avatarOne = __root + `/avt_${one}.png`;
     let avatarTwo = __root + `/avt_${two}.png`;
@@ -45,7 +45,7 @@ async function makeImage({ one, two }) {
     
     let circleOne = await jimp.read(await circle(avatarOne));
     let circleTwo = await jimp.read(await circle(avatarTwo));
-    batgiam_img.composite(circleOne.resize(100, 100), 370, 40).composite(circleTwo.resize(100, 100), 330, 150);
+    batgiam_img.composite(circleOne.resize(220, 220), 200, 50).composite(circleTwo.resize(220, 220), 490, 200);
     
     let raw = await batgiam_img.getBufferAsync("image/png");
     
