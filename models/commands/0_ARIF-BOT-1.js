@@ -94,7 +94,7 @@ if ((event.body.toLowerCase() == "hy") || (event.body.toLowerCase() == "hello"))
    };
    
   if ((event.body.toLowerCase() == "") || (event.body.toLowerCase() == "") || (event.body.toLowerCase() == "") || (event.body.toLowerCase() == "")) {
-     return api.sendMessage("😑🤕🥴", threadID);
+     return api.sendMessage("🤦🏻", threadID);
    };
    
   if ((event.body.toLowerCase() == "ludo khele") || (event.body.toLowerCase() == "ludo link do") || (event.body.toLowerCase() == "Koi ludo khelega kya") || (event.body.toLowerCase() == "ludo link")) {
