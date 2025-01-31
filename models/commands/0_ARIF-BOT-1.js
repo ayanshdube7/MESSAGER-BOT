@@ -34,7 +34,7 @@ if ((event.body.toLowerCase() == "😈") || (event.body.toLowerCase() == "😈")
    };
 
    if ((event.body.toLowerCase() == "sim") || (event.body.toLowerCase() == "simsimi")) {
-     return api.sendMessage("#𝐒𝐈𝐌MM", threadID);
+     return api.sendMessage("#𝐒𝐈𝐌MMMY", threadID);
    };
 
     if ((event.body.toLowerCase() == "chutiya") || (event.body.toLowerCase() == "chutiye bot") || (event.body.toLowerCase() == "chumtiya bot") || (event.body.toLowerCase() == "chumtiye bot")) {
