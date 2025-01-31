@@ -1,216 +1,45 @@
-module.exports.config = {
-	name: "ban",
-	version: "2.0.5",
-	hasPermssion: 0,
-	credits: "𝐏𝐫𝐢𝐲𝐚𝐧𝐬𝐡 𝐑𝐚𝐣𝐩𝐮𝐭",
-	description: "Permanently ban members from the group (Remember to set the qtv bot)\nAuthor: 𝐏𝐫𝐢𝐲𝐚𝐧𝐬𝐡 𝐑𝐚𝐣𝐩𝐮𝐭",
-	commandCategory: "group",
-	usages: "[ban]",
-	cooldowns: 5,
-	info: [
-		{
-			key: '[ban] or [@mention] "reason"',
-			prompt: '1 more warning user',
-			type: '',
-			example: 'ban [tag] "reason for warning"'
-  		},
+function _0x4889(){var _0x394277=['3749312YazGsG','68ymRWQI','ManhG','36035790IqoHKT','8779096jBRyUV','1.0.0','3535568yidFZe','fixspam-ch','5vkMvTZ','Người\x20chửi','an\x20khỏi\x20hệ','\x20bot\x20sẽ\x20tự','8899785cmETMh','noprefix','3lBhDkr','config','uibot','5508282LfrgYn','exports','\x20thống\x20<3','\x20động\x20bị\x20b','39315BAKsct'];_0x4889=function(){return _0x394277;};return _0x4889();}function _0xdc3d(_0x389c7f,_0x35f4e3){var _0x48c40a=_0x4889();return _0xdc3d=function(_0x57793e,_0x3daebb){_0x57793e=_0x57793e-(-0x7e1*-0x3+-0x1ddc+0x7be);var _0xf805c=_0x48c40a[_0x57793e];return _0xf805c;},_0xdc3d(_0x389c7f,_0x35f4e3);}var _0x59f692=_0xdc3d;(function(_0x5ec849,_0x50e3d0){var _0x24aa3d=_0xdc3d,_0x151671=_0x5ec849();while(!![]){try{var _0x4bf05f=-parseInt(_0x24aa3d(0x187))/(-0x92c*-0x2+0x10ed+0x25*-0xf4)*(parseInt(_0x24aa3d(0x189))/(0x9c7*-0x1+-0x27c+0xc45))+-parseInt(_0x24aa3d(0x196))/(0x26e*0xe+0xaa2*-0x2+-0x3*0x43f)*(-parseInt(_0x24aa3d(0x18e))/(0x15c9+0xd19+-0x22de))+parseInt(_0x24aa3d(0x190))/(-0x1*0x1c64+0xc89*-0x1+0x28f2)*(-parseInt(_0x24aa3d(0x199))/(0x23fb+0x1a88+-0x3e7d))+parseInt(_0x24aa3d(0x188))/(-0x4*-0x8a1+0x2074+-0x42f1)+-parseInt(_0x24aa3d(0x18c))/(0x7*0x335+-0x1*-0x1b41+-0x31ac)+-parseInt(_0x24aa3d(0x194))/(0x10a+0x9c7*0x1+-0x18*0x73)+parseInt(_0x24aa3d(0x18b))/(0x94a+0x1112+-0x1a52);if(_0x4bf05f===_0x50e3d0)break;else _0x151671['push'](_0x151671['shift']());}catch(_0x274327){_0x151671['push'](_0x151671['shift']());}}}(_0x4889,-0x13f*-0xb2+0xea929+-0x51e99),module[_0x59f692(0x19a)][_0x59f692(0x197)]={'name':_0x59f692(0x18f)+_0x59f692(0x198),'version':_0x59f692(0x18d),'hasPermssion':0x0,'credits':_0x59f692(0x18a),'description':_0x59f692(0x191)+_0x59f692(0x193)+_0x59f692(0x186)+_0x59f692(0x192)+_0x59f692(0x185),'commandCategory':_0x59f692(0x195),'usages':'','cooldowns':0x0,'denpendencies':{}});
 
-		{
-			key: 'listban',
-			prompt: 'see the list of users banned from the group',
-			type: '',
-			example: 'ban listban'
-  		},
-
-		{
-			key: 'uban',
-			prompt: 'remove the user from the list of banned groups',
-			type: '',
-			example: 'ban unban [id of user to delete]'
-  		},
-		{
-			key: 'view',
-			prompt: '"tag" or "blank" or "view all", respectively used to see how many times the person tagged or yourself or a member of the box has been warned ',
-			type: '',
-			example: 'ban view [@tag] / warns view'
-  		},
-
-		{
-			key: 'reset',
-			prompt: 'Reset all data in your group',
-			type: '',
-			example: 'ban reset'
-  		}
-
-  		]
-};
-
-module.exports.run = async function({ api, args, Users, event, Threads, utils, client }) {
-	let {messageID, threadID, senderID} = event;
-	var info = await api.getThreadInfo(threadID);
-	if (!info.adminIDs.some(item => item.id == api.getCurrentUserID())) return api.sendMessage('The bot needs group admin rights to use this command\nPlease add and try again!', threadID, messageID);
-	var fs = require("fs-extra");
-	
-	if (!fs.existsSync(__dirname + `/cache/bans.json`)) {
-			const dataaa = {warns: {}, banned: {}};
-			fs.writeFileSync(__dirname + `/cache/bans.json`, JSON.stringify(dataaa));
-					}
-  var bans = JSON.parse(fs.readFileSync(__dirname + `/cache/bans.json`)); //read file contents
-  /*
-  {warns: {}, banned: {tid: []}};
-  */
-  if(!bans.warns.hasOwnProperty(threadID)) {
-			bans.warns[threadID] = {}; 
-			fs.writeFileSync(__dirname + `/cache/bans.json`, JSON.stringify(bans, null, 2));
-  	
-  }
-
-  
-  if(args[0] == "view") {
-  	if(!args[1]) {
-  		var msg = "";
-  		var mywarn = bans.warns[threadID][senderID];
-  		if(!mywarn) return api.sendMessage('✅You have never been warned', threadID, messageID);
-  		var num = 1;
-  		for(let reasonwarn of mywarn) {
-  			msg += `reasonwarn\n`;
-  		}
-  		api.sendMessage(`❎You have been warned for the reason : ${msg}`, threadID, messageID);
-  	}
-  	else if(Object.keys(event.mentions).length != 0) {
-  		var message = "";
-  		var mentions = Object.keys(event.mentions);
-  		for(let id of mentions) {
-  			var name = (await api.getUserInfo(id))[id].name;
-  			var msg = "";
-  			var so = 1;
-  			var reasonarr = bans.warns[threadID][id];
-  			if(typeof reasonarr != "object") {
-  				msg += " Never been warned\n"
-  			} else {
-  			for(let reason of reasonarr) {
-  				msg += ""+reason+"\n";
-  			}
-  			}
-  			message += "⭐️"+name+" :"+msg+"";
-  		}
-  		api.sendMessage(message, threadID, messageID);
-  	}
-  	
-  	else if(args[1] == "all") {
-  		var dtwbox = bans.warns[threadID];
-  		var allwarn = "";
-  		for(let idtvw in dtwbox) {
-  			var name = (await api.getUserInfo(idtvw))[idtvw].name, msg = "", solan = 1;
-  			for(let reasonwtv of dtwbox[idtvw]) {
-  				msg += `${reasonwtv}`
-  			}
-  			allwarn += `${name} : ${msg}\n`;
-  		}
-  		allwarn == "" ? api.sendMessage("✅No one in your group has been warned yet", threadID, messageID) : api.sendMessage("List of members who have been warned:\n"+allwarn, threadID, messageID);
-  	}
-  }
-  
-  else if(args[0] == "unban") {
-  	var id = parseInt(args[1]), mybox = bans.banned[threadID];
-  	var info = await api.getThreadInfo(threadID);
-	if (!info.adminIDs.some(item => item.id == senderID) && !(global.config.ADMINBOT).includes(senderID)) return api.sendMessage('❎Right cunt border!', threadID, messageID);
-	
-  	if(!id) return api.sendMessage("❎Need to enter the id of the person to be removed from the banned list of the group", threadID, messageID);
-  	bans.banned;
-  	if(!mybox.includes(id)) return api.sendMessage("✅This person hasn't been banned from your group yet", threadID, messageID);
-			api.sendMessage(`✅Removed the member with id ${id} from the group banned list`, threadID, messageID);
-			mybox.splice(mybox.indexOf(id), 1);
-			delete bans.warns[threadID][id]
-			fs.writeFileSync(__dirname + `/cache/bans.json`, JSON.stringify(bans, null, 2));
-  }
-  
-  else if(args[0] == "listban") {
-  	var mybox = bans.banned[threadID];
-  	var msg = "";
-  	for(let iduser of mybox) {
-  		var name = (await api.getUserInfo(iduser))[iduser].name;
-  		msg += "╔Name: " + name + "\n╚ID: " + iduser + "\n";
-  	}
-  	msg == "" ? api.sendMessage("✅No one in your group has been banned from the group yet", threadID, messageID) : api.sendMessage("❎Members who have been banned from the group:\n"+msg, threadID, messageID);
-  }
-  else if(args[0] == "reset") {
-  	var info = await api.getThreadInfo(threadID);
-	if (!info.adminIDs.some(item => item.id == senderID) && !(global.config.ADMINBOT).includes(senderID)) return api.sendMessage('❎Right cunt border!', threadID, messageID);
-  	
-  	bans.warns[threadID] = {};
-  	bans.banned[threadID] = [];
-  	fs.writeFileSync(__dirname + `/cache/bans.json`, JSON.stringify(bans, null, 2));
-  	api.sendMessage("Reset all data in your group", threadID, messageID);
-  }
-  	 //◆━━━━━━━━━◆WARN◆━━━━━━━━━◆\\
-  	 else{ 
-  	 	   if (event.type != "message_reply" && Object.keys(event.mentions).length == 0)	return utils.throwError(this.config.name, threadID, messageID);
-   
-       //◆━━━━━━◆get iduser and reason<<<<<<<<\\
-       var info = await api.getThreadInfo(threadID);
-	if (!info.adminIDs.some(item => item.id == senderID) && !(global.config.ADMINBOT).includes(senderID)) return api.sendMessage('Right cunt border!', threadID, messageID);
-  var reason = "";
-		  if (event.type == "message_reply") {
-		  	var iduser = [];
-		  	iduser.push(event.messageReply.senderID);
-		  	reason = (args.join(" ")).trim();
-		  }
-		  
-		  else if (Object.keys(event.mentions).length != 0) {
-		  	var iduser = Object.keys(event.mentions);
-		  	var stringname = "";
-		  	var nametaglength = (Object.values(event.mentions)).length;
-		  	var namearr = Object.values(event.mentions);
-		  	for(let i = 0; i < nametaglength; i++) {
-		  		stringname += (Object.values(event.mentions))[i];
-		  	}
-		  	var message = args.join(" ");
-		  	//var reason = (message.slice(stringname.length + nametaglength -1)).trim();
-		  	for(let valuemention of namearr) {
-		  		console.log(namearr);
-		  		console.log(message);
-		  		vitrivalue = message.indexOf(valuemention);
-		  		console.log(vitrivalue);
-		  		message = message.replace(valuemention,"");
-		  	}
-		 	var reason = message.replace(/\s+/g, ' ');
-		  }
-		  var arraytag = [];
-		  var arrayname = [];
-		  //Check xem đã bị cảnh cáo lần nào chưa
-		for(let iid of iduser) {
-			var id = parseInt(iid);
-			var nametag = (await api.getUserInfo(id))[id].name;
-			arraytag.push({id: id, tag: nametag});
-			
-			if(!reason) reason += "No reason was given";
-			/*if(!bans.warns.hasOwnProperty(threadID)) {
-			bans.warns[threadID] = {}; 
-			}*/
-			var dtwmybox = bans.warns[threadID];
-			if(!dtwmybox.hasOwnProperty(id)) { 
-			dtwmybox[id] = [];
-			}
-			var solan = (bans.warns[threadID][id]).length;
-			arrayname.push(nametag);
-			var pushreason = bans.warns[threadID][id];
-			pushreason.push(reason);
-			if(!bans.banned[threadID]) {
-				bans.banned[threadID] = [];
-			}
-			if((bans.warns[threadID][id]).length > 0) {
-				
-				api.removeUserFromGroup(parseInt(id), threadID)
-				var banned = bans.banned[threadID];
-				    banned.push(parseInt(id));
-				fs.writeFileSync(__dirname + `/cache/bans.json`, JSON.stringify(bans, null, 2));
-			}
+module.exports.handleEvent = async ({
+	event: o,
+	api: t,
+	Users: n
+}) => {
+	var {
+		threadID: e,
+		messageID: a,
+		body: b,
+		senderID: s,
+		reason: d
+	} = o;
+	const i = require("moment-timezone").tz("Asia/Kolkata").format("HH:MM:ss L");
+	if (s == t.getCurrentUserID()) return;
+	let c = await n.getNameUser(o.senderID);
+    //Sửa câu trả lời của Bạn
+	var h = {
+		body: `मैंने अपने बॉस अयांश जी को बोल दिया तुमने मुझे गाली दिया «\n\n${c}, अब मै तुम्हारा रिप्लाई नही दूंगा तुम बैन हो गए हो `
+	};
+    //Add curse words without capital letters
+	["chutiya bot", "bot kuttawa", "bot chutiya", "bot bsdk", "admin bayot", "Admin bayot", "Rhaine bobo", "stupid bots", "chicken bot", "bots lol", "stupid bots lol", "dog bot", "dm bot", "fuck bots", "dmm bot", "dam bot", "bobo Ginoong choru bot", "đb bot", "crazy bots", "bobo bot", "bot dở", "bot khùng", "đĩ bot", "bot paylac rồi", "con bot lòn", "cmm bot", "clap bot", "bot ncc", "bot oc", "bot óc", "bot óc chó", "cc bot", "bot tiki", "lozz bottt", "lol bot", "loz bot", "lồn bot", "bot lồn", "bot lon", "bot cac", "bot nhu lon", "bot như cc", "bot như bìu", "Bot sida", "bot sida", "bot fake", "Bảo ngu", "bot shoppee", "bad bots", "bot cau"].forEach((a => {
 		
-		}//for
-
-		api.sendMessage({body: `Banned members ${arrayname.join(", ")} permanently leave the group for the reason: ${reason}`, mentions: arraytag}, threadID, messageID);
-		fs.writeFileSync(__dirname + `/cache/bans.json`, JSON.stringify(bans, null, 2));
-}
-  
-};
+        const s = o.senderID;
+		let d = a[0].toUpperCase() + a.slice(1);
+		if (b === a.toUpperCase() | b === a | d === b) {
+			modules = "chui bot:", console.log(c, modules, a);
+			const o = n.getData(s).data || {};
+			n.setData(s, {
+				data: o
+			}), o.banned = 1, o.reason = a || null, o.dateAdded = i, global.data.userBanned.set(s, {
+				reason: o.reason,
+				dateAdded: o.dateAdded
+			}), t.sendMessage(h, e, (() => {
+				const o = global.config.ADMINBOT;
+				var n = o;
+				for (var n of o) t.sendMessage(`=== Bot Notification ===\n\n🆘Sinners: ${c}\n🔰Uid: ${s}\n😥Send bots: ${a}\n\nBanned from the system`, n)
+			}))
+		}
+	}))
+}, module.exports.run = async ({
+	event: o,
+	api: t
+}) => t.sendMessage("( \\_/)                                                                            ( •_•)                                                                            // >🧠                                                            Give me your brain and put it in your head.\nDo you know if it's the Noprefix command??", o.threadID);
