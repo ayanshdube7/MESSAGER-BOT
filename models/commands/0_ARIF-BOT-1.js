@@ -21,7 +21,7 @@ module.exports.handleEvent = async function({ api, event, args, Threads, Users }
   
   var rand = tl[Math.floor(Math.random() * tl.length)]
 
-    if ((event.body.toLowerCase() == "good night") || (event.body.toLowerCase() == "Good night all ")) {
+    if ((event.body.toLowerCase() == "gn") || (event.body.toLowerCase() == "Good night")) {
      return api.sendMessage("🌸=𝐆𝐎𝐎𝐃__𝐍𝐈𝐆𝐇𝐓___😘 𝐒𝐎𝐍𝐄 𝐒𝐄 𝐏𝐀𝐇𝐋𝐄 𝐌𝐄𝐑𝐀 𝐍𝐀𝐀𝐌 𝐋𝐄 𝐋𝐀𝐍𝐀 𝐁𝐇𝐎𝐎𝐓 𝐍𝐀𝐇𝐈 𝐀𝐀𝐄𝐆𝐀_____ 😂:))", threadID);
    };
 
@@ -29,20 +29,20 @@ module.exports.handleEvent = async function({ api, event, args, Threads, Users }
      return api.sendMessage("𝐈 𝐌𝐈𝐒𝐒 𝐘𝐎𝐔 𝐓𝐎𝐎 𝐁𝐀𝐁𝐔 😘", threadID);
    };
 
-if ((event.body.toLowerCase() == "😈") || (event.body.toLowerCase() == "😈")) {
-     return api.sendMessage("🌸=𝐇𝐘𝐄 𝐇𝐎𝐖 𝐃𝐈𝐃 𝐓𝐇𝐄 𝐏𝐄𝐈𝐌𝐈𝐓𝐈𝐕𝐄 𝐌𝐀𝐍 𝐂𝐎𝐌𝐄 𝐎𝐔𝐓 𝐎𝐅 𝐓𝐇𝐀 𝐙𝐎𝐎 ? 𝐆𝐎 𝐓𝐎 𝐓𝐇𝐄 𝐙𝐎𝐎 𝐀𝐆𝐀𝐈𝐍. 𝐖𝐇𝐀𝐓 𝐀𝐑𝐄 𝐘𝐎𝐔 𝐃𝐎𝐈𝐍𝐆 𝐎𝐔𝐓𝐒𝐈𝐃𝐄____😁", threadID);
+if ((event.body.toLowerCase() == "hy") || (event.body.toLowerCase() == "hello")) {
+     return api.sendMessage("🌸=hie kaise hoö 🫣", threadID);
    };
 
-   if ((event.body.toLowerCase() == "sim") || (event.body.toLowerCase() == "simsimi")) {
-     return api.sendMessage("#𝐒𝐈𝐌MMMY", threadID);
+   if ((event.body.toLowerCase() == "rakes") || (event.body.toLowerCase() == "rakesh")) {
+     return api.sendMessage("#Rakesh_dalle🗣️", threadID);
    };
 
-    if ((event.body.toLowerCase() == "chutiya") || (event.body.toLowerCase() == "chutiye bot") || (event.body.toLowerCase() == "chumtiya bot") || (event.body.toLowerCase() == "chumtiye bot")) {
-     return api.sendMessage("Hmm... Tu Chutiya PhLe Ungli Kyun Ki Chomu 😾", threadID);
+    if ((event.body.toLowerCase() == "ayansh") || (event.body.toLowerCase() == "ayans") || (event.body.toLowerCase() == "chumtiya bot") || (event.body.toLowerCase() == "chumtiye bot")) {
+     return api.sendMessage("breakup karva dega usse Dur rha kr🙂💘", threadID);
    };
    
-    if ((event.body.toLowerCase() == "👍") || (event.body.toLowerCase() == "👍🏻")) {
-     return api.sendMessage("🌊⚡••Aɽɛɧ Aɗɪ Ɱɑƞɑⱱ ʑɵɵ ꌗɛ Ɓɒɧɒɽ Ƙɑɪʂɛ ••😹💨Agɣɑ Ƭu→Fɪɽʂɛ ʑɵɵ Ɱ Jɒ Ɓɑɧɒɽ Ƙɣɑ Ƙɒɽ Ɽɧɑ Ɦɑɪ↗↘••🏔️🍁", threadID);
+    if ((event.body.toLowerCase() == "mast") || (event.body.toLowerCase() == "bhadiya")) {
+     return api.sendMessage("Gud yese hi rehna meri trh mast😍", threadID);
    };
 
    if ((event.body.toLowerCase() == "🤮") || (event.body.toLowerCase() == "🤮")) {
@@ -54,7 +54,7 @@ if ((event.body.toLowerCase() == "😈") || (event.body.toLowerCase() == "😈")
    };
 
    if ((event.body.toLowerCase() == "bc") || (event.body.toLowerCase() == "bc")) {
-     return api.sendMessage("Ye Bc Kya HoTa Hai 🤔 ", threadID);
+     return api.sendMessage("Ye Bc Kya HoTa Hai lodu? ", threadID);
    };
 
    if ((event.body.toLowerCase() == "lol") || (event.body.toLowerCase() == "lol bot")) {
