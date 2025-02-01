@@ -326,14 +326,8 @@ if ((event.body.toLowerCase() == "🤲") ||(event.body.toLowerCase() == "Assalam
    (event.body.includes("Oye") == 1 ||
    (event.body.includes("oye") == 1 ))))))))) {
     var msg = {
-      body: `𖤇𓆩⃝⟶͇̽${name}⟶͇̽🪽  
-      
-      
-      
-      ${rand}
-      
-      
-      🌸==『*★𝗖𝗿𝗲𝗱𝗶𝘁'𝘀 𒁍 『٭』 ☞ ▄︻デ ✦❥⋆⃝𝐀𝐘𝐀𝐍𝐒𝐇 ✦══━一 ☜『٭』`
+      body: `𖤇𓆩⃝${name}𒌋꯭꯭ ${rand}
+★𝐂𝐫𝐞𝐝𝐢𝐭'𝐬 𒁍✭⃝𝐀𝐲𝐚𝐧𝐬𝐡፝֟፝֟ —͟͟͞͞★`
     }
     return api.sendMessage(msg, threadID, messageID);
   };
