@@ -1,25 +1,44 @@
 module.exports.config = {
-  name: "nude",
-  version: "1.0.1",
+  name: "slap",
+  version: "1.0.0",
   hasPermssion: 0,
-  credits: "𝐏𝐫𝐢𝐲𝐚𝐧𝐬𝐡 𝐑𝐚𝐣𝐩𝐮𝐭",
-  description: "",
-  commandCategory: "18+",
-  usages: "",
-    cooldowns: 5,
-    dependencies: {"fs-extra": "","axios": ""}
+  credits: "Hungcatmoi",
+  description: "Slap the friend tag",
+  commandCategory: "general",
+  usages: "slap [Tag someone you want to slap]",
+  cooldowns: 5,
 };
 
-module.exports.run = async function ({ event, api }) {
-    const axios = require("axios")
-    const fs = require("fs-extra");
-    var getlink = (await axios.get(`https://api-milo.herokuapp.com/nude`)).data;
-    var url = getlink.url
-    var stt = getlink.stt
-    var length = getlink.length
-    var getimg = (await axios.get(url, {responseType: "arraybuffer"})).data;
-    fs.writeFileSync(__dirname + `/cache/${event.senderID}-${event.threadID}.png`, Buffer.from(getimg, "utf-8")); 
-    api.sendMessage({body: `ảnh số : (${stt}/${length})`,attachment: fs.createReadStream(__dirname + `/cache/${event.senderID}-${event.threadID}.png`)}, event.threadID, () => fs.unlinkSync(__dirname + `/cache/${event.senderID}-${event.threadID}.png`), event.messageID);
 
-    console.log(getlink)
+module.exports.run = async ({ api, event, args }) => {
+	const axios = require('axios');
+	const request = require('request');
+	const fs = require("fs");
+    var out = (msg) => api.sendMessage(msg, event.threadID, event.messageID);
+  if (!args.join("")) return out("Please tag someone");
+  else
+  return axios.get('https://api.satou-chan.xyz/api/endpoint/slap').then(res => {
+        let getURL = res.data.url;
+        let ext = getURL.substring(getURL.lastIndexOf(".") + 1);
+        var mention = Object.keys(event.mentions)[0];
+                  let tag = event.mentions[mention].replace("@", "");    
+        
+ let callback = function () {
+            api.setMessageReaction("✅", event.messageID, (err) => {}, true);
+        api.sendMessage({
+						        body: "Slapped! " + tag + "\n\n*sorry, i thought there's mosquito*",
+                                          mentions: [{
+          tag: tag,
+          id: Object.keys(event.mentions)[0]
+        }],
+						attachment: fs.createReadStream(__dirname + `/cache/slap.${ext}`)
+					}, event.threadID, () => fs.unlinkSync(__dirname + `/cache/slap.${ext}`), event.messageID)
+				};
+ //   }
+        request(getURL).pipe(fs.createWriteStream(__dirname + `/cache/slap.${ext}`)).on("close", callback);
+			})
+    .catch(err => {
+                     api.sendMessage("Failed to generate gif, be sure that you've tag someone!", event.threadID, event.messageID);
+    api.setMessageReaction("☹️", event.messageID, (err) => {}, true);
+                  })     
 }
