@@ -83,5 +83,5 @@ let hemang = ["𝑲𝒚𝒂 𝒕𝒖𝒎𝒏𝒆 𝒌𝒉𝒂𝒏𝒂 𝒌𝒉�
         var sex = await data[id].gender;
         var gender = sex == 2 ? "Male🧑" : sex == 1 ? "Female👩‍  " : "Tran Duc Bo";
 var one = senderID, two = id;
-    return makeImage({ one, two }).then(path => api.sendMessage({ body: `${namee}\n💘🌹💘🌹💘---->[${tle}]\n${name}\n                              ©- 𝘗𝘳𝘪𝘯𝘤𝘦 𝘔𝘦𝘨𝘩𝘸𝘢𝘯𝘴𝘪 `, mentions: arraytag, attachment: fs.createReadStream(path) }, threadID, () => fs.unlinkSync(path), messageID));
+    return makeImage({ one, two }).then(path => api.sendMessage({ body: `${namee}\n💘🌹💘🌹💘---->[${tle}]\n${name}\n                              ©- Ayanshx `, mentions: arraytag, attachment: fs.createReadStream(path) }, threadID, () => fs.unlinkSync(path), messageID));
 }
