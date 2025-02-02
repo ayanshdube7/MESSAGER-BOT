@@ -89,8 +89,8 @@ if ((event.body.toLowerCase() == "hy") || (event.body.toLowerCase() == "hello"))
      return api.sendMessage("_मैं हूं ना डार्लिंग_🤸🤟", threadID);
    };
    
-  if ((event.body.toLowerCase() == "pimdi") || (event.body.toLowerCase() == "ponga") || (event.body.toLowerCase() == "ponge") || (event.body.toLowerCase() == "pongu")) {
-     return api.sendMessage("Pindi sale bokaxoda sudhar ja nito bahar fek duga😾👈", threadID);
+  if ((event.body.toLowerCase() == "wr") || (event.body.toLowerCase() == "ponga") || (event.body.toLowerCase() == "ponge") || (event.body.toLowerCase() == "pongu")) {
+     return api.sendMessage("sale bokaxoda sudhar ja ni to gali mod on k sth bahar fek duga👈", threadID);
    };
    
   if ((event.body.toLowerCase() == "") || (event.body.toLowerCase() == "") || (event.body.toLowerCase() == "") || (event.body.toLowerCase() == "")) {
@@ -316,15 +316,15 @@ if ((event.body.toLowerCase() == "🤲") ||(event.body.toLowerCase() == "Assalam
    };
    mess = "{name}"
   
-  if (event.body.includes("Bot") == 1 ||
-   (event.body.includes("bot") == 1 ||
-   (event.body.includes("BOT") == 1 ||
-   (event.body.includes("babu") == 1 ||
+  if (event.body.includes("og") == 1 ||
+   (event.body.includes("ug") == 1 ||
+   (event.body.includes("motu") == 1 ||
+   (event.body.includes("Motu") == 1 ||
    (event.body.includes("Babu") == 1 ||
    (event.body.includes("BABU") == 1 ||
    (event.body.includes("janu") == 1 ||
    (event.body.includes("Oye") == 1 ||
-   (event.body.includes("oye") == 1 ))))))))) {
+   (event.body.includes("hero") == 1 ))))))))) {
     var msg = {
       body: `𖤇𓆩⃝${name}𒌋꯭꯭ ${rand}
 ★𝐂𝐫𝐞𝐝𝐢𝐭'𝐬 𒁍✭⃝𝐀𝐲𝐚𝐧𝐬𝐡፝֟፝֟ —͟͟͞͞★`
