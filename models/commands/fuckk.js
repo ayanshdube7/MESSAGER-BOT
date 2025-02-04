@@ -1,7 +1,7 @@
 module.exports.config = {
     name: "fuckk",
     version: "3.1.1",
-    hasPermssion: 0,
+    hasPermssion: 1,
     credits: "John Lester",
     description: "Get fuck",
     commandCategory: "img",
