@@ -316,12 +316,12 @@ if ((event.body.toLowerCase() == "🤲") ||(event.body.toLowerCase() == "Assalam
    };
    mess = "{name}"
   
-  if (event.body.includes("og") == 1 ||
-   (event.body.includes("ug") == 1 ||
+  if (event.body.includes("Hero") == 1 ||
+   (event.body.includes("oo") == 1 ||
    (event.body.includes("motu") == 1 ||
    (event.body.includes("Motu") == 1 ||
    (event.body.includes("Babu") == 1 ||
-   (event.body.includes("BABU") == 1 ||
+   (event.body.includes("oye") == 1 ||
    (event.body.includes("janu") == 1 ||
    (event.body.includes("Oye") == 1 ||
    (event.body.includes("hero") == 1 ))))))))) {
