@@ -1,7 +1,7 @@
 module.exports.config = {
   name: "ok",
   version: "1.0.1",
-  hasPermssion: 0,
+  hasPermssion: 1,
   credits: "ProCoderCyrus",
   description: "Pair with people in the group",
   usePrefix: true,
