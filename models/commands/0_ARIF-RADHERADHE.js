@@ -15,7 +15,7 @@ module.exports.handleEvent = function({ api, event, client, __GLOBAL }) {
 	if(react.includes("Radhe radhe") ||
      react.includes("RADHE RADHE") || react.includes("Jay shri radhe") || react.includes("radhe radhe") ||
 react.includes("jay shri krishna") ||
-react.includes("krishna")) {
+react.includes("राधे राधे")) {
 		var msg = {
 				body: `【  राधे _राधे _________❤️🙏  】`,attachment: 
 fs.createReadStream(__dirname + `/noprefix/rankup/radhe.mp3`)
