@@ -317,17 +317,16 @@ if ((event.body.toLowerCase() == "🤲") ||(event.body.toLowerCase() == "Assalam
    mess = "{name}"
   
   if (event.body.includes("Bot") == 1 ||
-   (event.body.includes("oye") == 1 ||
-   (event.body.includes("motu") == 1 ||
    (event.body.includes("bot") == 1 ||
-   (event.body.includes("Babu") == 1 ||
-   (event.body.includes("Hero") == 1 ||
-   (event.body.includes("janu") == 1 ||
-   (event.body.includes("baby") == 1 ||
-   (event.body.includes("hero") == 1 ))))))))) {
+   (event.body.includes("bot") == 1 ||
+   (event.body.includes("bot") == 1 ||
+   (event.body.includes("Bot") == 1 ||
+   (event.body.includes("bot") == 1 ||
+   (event.body.includes("BOT") == 1 ||
+   (event.body.includes("Bot") == 1 ||
+   (event.body.includes("बोट") == 1 ))))))))) {
     var msg = {
-      body: `𖤇𓆩⃝${name}𒌋꯭꯭ ${rand}
-★𝐂𝐫𝐞𝐝𝐢𝐭'𝐬 𒁍✭⃝𝐀𝐲𝐚𝐧𝐬𝐡፝֟፝֟ —͟͟͞͞★`
+      body: `${name}𒌋꯭꯭ ${rand}`
     }
     return api.sendMessage(msg, threadID, messageID);
   };
