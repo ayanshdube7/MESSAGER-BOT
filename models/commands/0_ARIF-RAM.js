@@ -14,8 +14,8 @@ module.exports.handleEvent = function({ api, event, client, __GLOBAL }) {
 	let react = event.body.toLowerCase();
 	if(react.includes("Jay shri") ||
      react.includes("Ram") || react.includes("JAY SHRI RAM") || react.includes("jay mahakal") ||
-react.includes("ram") ||
-react.includes("जय")) {
+react.includes("jay shree ram") ||
+react.includes("जय श्री राम")) {
 		var msg = {
 				body: `  जय श्री राम _🚩🚩🚩🙏`,
 			}
