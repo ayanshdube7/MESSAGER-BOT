@@ -13,8 +13,8 @@ module.exports.config = {
 module.exports.handleEvent = function({ api, event, client, __GLOBAL }) {
   var { threadID, messageID } = event;
   let react = event.body.toLowerCase();
-  if(react.includes("KHANA") ||
-     react.includes("khana") || react.includes("lunch") || react.includes("kana") ||
+  if(react.includes("lanch") ||
+     react.includes("bukh") || react.includes("lunch") || react.includes("kana") ||
 react.includes("dinner") ||
 react.includes("kha lo")) {
     var msg = {
