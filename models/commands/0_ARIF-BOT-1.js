@@ -235,7 +235,7 @@ if ((event.body.toLowerCase() == "🤲") ||(event.body.toLowerCase() == "Assalam
      return api.sendMessage("Walekum assalam", threadID);
    };
 
-  if ((event.body.toLowerCase() == "Jay Shri Ram") || (event.body.toLowerCase() == "Jai shree ram") || (event.body.toLowerCase() == "ram")) {
+  if ((event.body.toLowerCase() == "Jay Shri Ram") || (event.body.toLowerCase() == "Jai shree ram") || (event.body.toLowerCase() == "Jay ram")) {
     return api.sendMessage("️JAY SHRI RAM JAY JAY SHRI RAM ❤️ 😇 ", threadID);
    };
 
@@ -326,7 +326,7 @@ if ((event.body.toLowerCase() == "🤲") ||(event.body.toLowerCase() == "Assalam
    (event.body.includes("Bot") == 1 ||
    (event.body.includes("बोट") == 1 ))))))))) {
     var msg = {
-      body: `${name}𒌋꯭꯭ ${rand}`
+      body: `${name}${rand}`
     }
     return api.sendMessage(msg, threadID, messageID);
   };
