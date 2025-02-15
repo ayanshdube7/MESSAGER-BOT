@@ -1,9 +1,9 @@
 const fs = require("fs");
 module.exports.config = {
-  name: "arif aa gya",
+  name: "Ayansh",
     version: "1.0.1",
   hasPermssion: 0,
-  credits: "ARIF BABU", 
+  credits: "Ayanx BABU", 
   description: "hihihihi",
   commandCategory: "no prefix",
   usages: "Bot kon banaya",
@@ -12,9 +12,9 @@ module.exports.config = {
 
 module.exports.handleEvent = function({ api, event, client, __GLOBAL }) {
   var { threadID, messageID } = event;
-  if (event.body.indexOf("Prince")==0 || event.body.indexOf("prince")==0 || event.body.indexOf("Prince babu")==0 || event.body.indexOf("PRINCE")==0) {
+  if (event.body.indexOf("@Ayansh")==0 || event.body.indexOf("Ayans")==0 || event.body.indexOf("ayansh")==0 || event.body.indexOf("Ayansh")==0) {
     var msg = {
-        body: "मुझे मेरे प्रिंस मेघवंशी बॉस ने बनाया है 😐",
+        body: "Sb pta xal rha he😌",
         attachment: fs.createReadStream(__dirname + `/ARIF-BABU/dk.mp3`)
       }
       api.sendMessage(msg, threadID, messageID);
