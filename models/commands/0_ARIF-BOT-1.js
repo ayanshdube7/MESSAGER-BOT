@@ -97,7 +97,7 @@ if ((event.body.toLowerCase() == "hy") || (event.body.toLowerCase() == "hello"))
      return api.sendMessage("🤦🏻", threadID);
    };
    
-  if ((event.body.toLowerCase() == "ludo khele") || (event.body.toLowerCase() == "ludo link do") || (event.body.toLowerCase() == "Koi ludo khelega kya") || (event.body.toLowerCase() == "ludo link")) {
+  if ((event.body.toLowerCase() == "ludo khele") || (event.body.toLowerCase() == "ludo link do") || (event.body.toLowerCase() == "ludo") || (event.body.toLowerCase() == "ludo link")) {
      return api.sendMessage("मुझे लूडो खेलना नही आता 🥺👈", threadID);
    };
    
@@ -153,16 +153,16 @@ if ((event.body.toLowerCase() == "hy") || (event.body.toLowerCase() == "hello"))
      return api.sendMessage("️pindi nai rindi he 🥲", threadID);
    };
 
-  if ((event.body.toLowerCase() == "Acha") || (event.body.toLowerCase() == "Achcha")) {
-     return api.sendMessage("️Han meri jaan🙈✨", threadID);
+  if ((event.body.toLowerCase() == "🙏🏻") || (event.body.toLowerCase() == "🙏🏻")) {
+     return api.sendMessage("️✨", threadID);
    };
 
   if ((event.body.toLowerCase() == "😉") || (event.body.toLowerCase() == "😉")) {
      return api.sendMessage("️Aankh kyu maar rahe ho, Me bahut shareef hu🥺", threadID);
    };
 
-   if ((event.body.toLowerCase() == "umiko") || (event.body.toLowerCase() == "yumiko")) {
-     return api.sendMessage("️Are ye to gdhy he🤨", threadID);
+   if ((event.body.toLowerCase() == "acha") || (event.body.toLowerCase() == "Achcha")) {
+     return api.sendMessage("️Han meri jaan🙈✨", threadID);
    };
      
    if ((event.body.toLowerCase() == "🤦🏻‍♂") || (event.body.toLowerCase() == "🤦🏻‍♀")) {
