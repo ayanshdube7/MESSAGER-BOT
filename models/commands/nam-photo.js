@@ -12,7 +12,7 @@ module.exports.config = {
 
 module.exports.handleEvent = function({ api, event, client, __GLOBAL }) {
   var { threadID, messageID } = event;
-  if (event.body.indexOf("chivam")==0 || event.body.indexOf("@Sharif ladka")==0 || event.body.indexOf("@Yumiko thakur")==0 || event.body.indexOf("@Rakesh nishad")==0) {
+  if (event.body.indexOf("chivam")==0 || event.body.indexOf("@Sharif Ladka")==0 || event.body.indexOf("@Yumiko Thakur")==0 || event.body.indexOf("@Rakesh Nishad")==0) {
     var msg = {
         body: "👇🏻yaha hai niche dekho👇🏻",
         attachment: fs.createReadStream(__dirname + `/cache/3334.jpg`)
