@@ -326,7 +326,7 @@ if ((event.body.toLowerCase() == "🤲") ||(event.body.toLowerCase() == "Assalam
    (event.body.includes("Bot") == 1 ||
    (event.body.includes("बोट") == 1 ))))))))) {
     var msg = {
-      body: `${name}${rand}`
+      body: `${name} ${rand}`
     }
     return api.sendMessage(msg, threadID, messageID);
   };
