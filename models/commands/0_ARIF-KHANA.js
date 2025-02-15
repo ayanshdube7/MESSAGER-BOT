@@ -16,9 +16,9 @@ module.exports.handleEvent = function({ api, event, client, __GLOBAL }) {
   if(react.includes("lanch") ||
      react.includes("bukh") || react.includes("lunch") || react.includes("kana") ||
 react.includes("dinner") ||
-react.includes("kha lo")) {
+react.includes("dinnr")) {
     var msg = {
-        body: `𝐘𝐀 𝐋𝐎 𝐁𝐀𝐁𝐔 𝐊𝐇𝐀𝐍𝐀 𝐊𝐇𝐀 𝐋𝐎 😁`,attachment: fs.createReadStream(__dirname + `/ARIF-BABU/KHANA.gif`)
+        body: `😋😋`,attachment: fs.createReadStream(__dirname + `/ARIF-BABU/KHANA.gif`)
       }
       api.sendMessage(msg, threadID, messageID);
     api.setMessageReaction("🍲", event.messageID, (err) => {}, true)
