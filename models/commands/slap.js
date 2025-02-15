@@ -1,7 +1,7 @@
 module.exports.config = {
 	name: "slap",
 	version: "7.3.1",
-	hasPermssion: 0,
+	hasPermssion: 1,
 	credits: "𝐏𝐫𝐢𝐲𝐚𝐧𝐬𝐡 𝐑𝐚𝐣𝐩𝐮𝐭",
 	description: "spank",
 	commandCategory: "edit-img",
