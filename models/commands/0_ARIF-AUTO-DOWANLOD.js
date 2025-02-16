@@ -56,7 +56,7 @@ module.exports.handleEvent = async function ({ api, event, client, __GLOBAL }) {
       );
       const bb = aa.data;
       const shortUrl = await tinyurl.shorten(bb.result);
-      const MSG = `─┼𝐂𝐫𝐞𝐝𝐢𝐭'𝐬〲𝐀𝐲𝐚𝐧𝐬𝐡፝֟፝֟ —͟͟͞͞★”— Download Url: ${shortUrl}`;
+      const MSG = `Owner Ayansx*”— Download Url: ${shortUrl}`;
       let ex;
       let cp;
       if (bb.result.includes(".jpg")) {
