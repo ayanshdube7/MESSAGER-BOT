@@ -1,47 +1,69 @@
 module.exports = {
-  config: {
-    name: "linkAutoDownload",
-    version: "1.3.0",
-    hasPermssion: 0,
-    credits: "ARIF BABU",
-    description:
-      "Automatically detects links in messages and downloads the file.",
-    commandCategory: "Utilities",
-    usages: "",
-    cooldowns: 5,
-  },
-  run: async function ({ events, args }) {},
-  handleEvent: async function ({ api, event, args }) {
-    const axios = require("axios");
-    const request = require("request");
-    const fs = require("fs-extra");
-    const content = event.body ? event.body : "";
-    const body = content.toLowerCase();
-    const { alldown } = require("arif-babu-media");
-    if (body.startsWith("https://")) {
-      api.setMessageReaction("📿", event.messageID, (err) => {}, true);
-      const data = await alldown(content);
-      console.log(data);
-      const { low, high, title } = data.data;
-      api.setMessageReaction("❤️‍🩹", event.messageID, (err) => {}, true);
-      const video = (
-        await axios.get(high, {
-          responseType: "arraybuffer",
-        })
-      ).data;
-      fs.writeFileSync(
-        __dirname + "/cache/auto.mp4",
-        Buffer.from(video, "utf-8")
-      );
-
-      return api.sendMessage(
-        {
-          body: `✨❁ ━━ ━[ 😀 ]━ ━━ ❁✨  ✦𝐎𝐰𝐧𝐞𝐫𒌋꯭꯭ 𝐀𝐲𝐚𝐧𝐬𝐡፝֟፝֟ ✭⃝🩷✦\n\nᴛɪᴛʟᴇ: ${title}\n\n✨❁ ━━ ━[ 😈 ]━ ━━ ❁✨`,
-          attachment: fs.createReadStream(__dirname + "/cache/auto.mp4"),
+        config: {
+                name: "autodownload",
+                version: "1.3.0",
+                hasPermssion: 2,
+                credits: "Priyansh Rajput",
+                description: "Auto download videos from Facebook links with status reactions.",
+                commandCategory: "Media",
+                usages: "[auto-detect]",
+                cooldowns: 5,
+                dependencies: {
+                        "axios": ""
+                }
         },
-        event.threadID,
-        event.messageID
-      );
-    }
-  },
+        handleEvent: async function({ api, event }) {
+                const axios = require('axios');
+
+                if (event.type === "message" && event.body) {
+                        if (event.body.startsWith("https://")) {
+                                const url = event.body;
+
+                                // Set a pending reaction
+                                api.setMessageReaction("⏳", event.messageID, (err) => {}, true);
+
+                                try {
+                                        const response = await axios.get(`https://priyansh-ai.onrender.com/autodown?url=${encodeURIComponent(url)}`);
+                                        const videoData = response.data.data[0];
+
+                                        if (!response.data.success || !videoData) {
+                                                // Set a cross reaction on error
+                                                api.setMessageReaction("❌", event.messageID, (err) => {}, true);
+                                                return api.sendMessage("", event.threadID, event.messageID);
+                                        }
+
+                                        const { title, like_count, videoUrl } = videoData;
+
+                                        await axios({
+                                                method: 'get',
+                                                url: videoUrl,
+                                                responseType: 'stream'
+                                        }).then(videoStream => {
+                                                api.sendMessage({
+                                                        body: `─┼𝐎𝐰𝐧𝐞𝐫〲𝐀𝐲𝐚𝐧𝐬𝐡፝֟፝֟ —͟͟͞͞★ ${title}\nLikes: ${like_count}`,
+                                                        attachment: videoStream.data
+                                                }, event.threadID, event.messageID);
+
+                                                // Set a checkmark reaction on success
+                                                api.setMessageReaction("✅", event.messageID, (err) => {}, true);
+
+                                        }).catch(error => {
+                                                // Set a cross reaction on error
+                                                api.setMessageReaction("❌", event.messageID, (err) => {
+                                                        if (err) console.error(err);
+                                                });
+                                                api.sendMessage("", event.threadID, event.messageID);
+                                        });
+
+                                } catch (error) {
+                                        // Set a cross reaction on error
+                                        api.setMessageReaction("❌", event.messageID, (err) => {}, true);
+                                        api.sendMessage("", event.threadID, event.messageID);
+                                }
+                        }
+                }
+        },
+        run: function() {
+                // The run function can be left empty or used for additional setup if needed.
+        }
 };
