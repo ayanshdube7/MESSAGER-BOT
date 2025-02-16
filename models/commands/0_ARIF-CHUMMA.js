@@ -14,10 +14,10 @@ module.exports.handleEvent = function({ api, event, client, __GLOBAL }) {
 	var { threadID, messageID } = event;
 	if (event.body.indexOf("💋")==0 || event.body.indexOf("Kiss")==0 || event.body.indexOf("Chumma")==0 || event.body.indexOf("💋💋💋")==0) {
 		var msg = {
-				body: "Ummaaaahhhhhh😘😘 Baby 😘",
+				body: "🤢",
 			}
 			api.sendMessage( msg, threadID, messageID);
-    api.setMessageReaction("😘", event.messageID, (err) => {}, true)
+    api.setMessageReaction("😾", event.messageID, (err) => {}, true)
 		}
 	}
 	module.exports.run = function({ api, event, client, __GLOBAL }) {
