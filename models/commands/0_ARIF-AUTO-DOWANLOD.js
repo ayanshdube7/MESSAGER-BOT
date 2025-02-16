@@ -1,69 +1,109 @@
-module.exports = {
-        config: {
-                name: "autodownload",
-                version: "1.3.0",
-                hasPermssion: 2,
-                credits: "Priyansh Rajput",
-                description: "Auto download videos from Facebook links with status reactions.",
-                commandCategory: "Media",
-                usages: "[auto-detect]",
-                cooldowns: 5,
-                dependencies: {
-                        "axios": ""
-                }
-        },
-        handleEvent: async function({ api, event }) {
-                const axios = require('axios');
-
-                if (event.type === "message" && event.body) {
-                        if (event.body.startsWith("https://")) {
-                                const url = event.body;
-
-                                // Set a pending reaction
-                                api.setMessageReaction("⏳", event.messageID, (err) => {}, true);
-
-                                try {
-                                        const response = await axios.get(`https://priyansh-ai.onrender.com/autodown?url=${encodeURIComponent(url)}`);
-                                        const videoData = response.data.data[0];
-
-                                        if (!response.data.success || !videoData) {
-                                                // Set a cross reaction on error
-                                                api.setMessageReaction("❌", event.messageID, (err) => {}, true);
-                                                return api.sendMessage("", event.threadID, event.messageID);
-                                        }
-
-                                        const { title, like_count, videoUrl } = videoData;
-
-                                        await axios({
-                                                method: 'get',
-                                                url: videoUrl,
-                                                responseType: 'stream'
-                                        }).then(videoStream => {
-                                                api.sendMessage({
-                                                        body: `─┼𝐎𝐰𝐧𝐞𝐫〲𝐀𝐲𝐚𝐧𝐬𝐡፝֟፝֟ —͟͟͞͞★ ${title}\nLikes: ${like_count}`,
-                                                        attachment: videoStream.data
-                                                }, event.threadID, event.messageID);
-
-                                                // Set a checkmark reaction on success
-                                                api.setMessageReaction("✅", event.messageID, (err) => {}, true);
-
-                                        }).catch(error => {
-                                                // Set a cross reaction on error
-                                                api.setMessageReaction("❌", event.messageID, (err) => {
-                                                        if (err) console.error(err);
-                                                });
-                                                api.sendMessage("", event.threadID, event.messageID);
-                                        });
-
-                                } catch (error) {
-                                        // Set a cross reaction on error
-                                        api.setMessageReaction("❌", event.messageID, (err) => {}, true);
-                                        api.sendMessage("", event.threadID, event.messageID);
-                                }
-                        }
-                }
-        },
-        run: function() {
-                // The run function can be left empty or used for additional setup if needed.
-        }
+const axios = require("axios");
+const fs = require("fs-extra");
+const tinyurl = require("tinyurl");
+const baseApiUrl = async () => {
+  const base = await axios.get(`https://raw.githubusercontent.com/Blankid018/D1PT0/main/baseApiUrl.json`);
+  return base.data.api;
 };
+
+module.exports.config = {
+  name: "autolink",
+  version: "1.0.",
+  hasPermssion: 0,
+  credits: "Nazrul",
+  description: "Fb Vid Downloader",
+  commandCategory: "other",
+  category: "others",
+  usags: "fb video link",
+  usePrefix: true,
+  prefix: true,
+  cooldowns: 2,
+  dependencies: {
+    axios: "",
+    "fs-extra": "",
+    tinyurl: "",
+  },
+};
+
+module.exports.handleEvent = async function ({ api, event, client, __GLOBAL }) {
+  let dipto = event.body ? event.body : "";
+  try {
+    if (
+      dipto.startsWith("https://vt.tiktok.com") ||
+      dipto.startsWith("https://vm.tiktok.com") ||
+      dipto.startsWith("https://www.facebook.com") ||
+      dipto.startsWith("https://fb.watch") ||
+      dipto.startsWith("https://www.tiktok.com/t/") ||
+ dipto.startsWith("https://www.capcut.com/t/") ||
+      dipto.startsWith("https://www.instagram.com/") ||
+      dipto.startsWith("https://youtu.be/") ||
+      dipto.startsWith("https://www.instagram.com/p/") ||
+      dipto.startsWith("https://pin.it/") ||
+      dipto.startsWith("https://youtube.com/")
+    ) {
+      api.sendMessage("", event.threadID, event.messageID);
+      if (!dipto) {
+        api.sendMessage(
+          "please put a valid fb video link",
+          event.threadID,
+          event.messageID,
+        );
+        return;
+      }
+
+      const aa = await axios.get(
+        `${await baseApiUrl()}/alldl?url=${encodeURIComponent(dipto)}`,
+      );
+      const bb = aa.data;
+      const shortUrl = await tinyurl.shorten(bb.result);
+      const MSG = `─┼𝐂𝐫𝐞𝐝𝐢𝐭'𝐬〲𝐀𝐲𝐚𝐧𝐬𝐡፝֟፝֟ —͟͟͞͞★”— Download Url: ${shortUrl}`;
+      let ex;
+      let cp;
+      if (bb.result.includes(".jpg")) {
+        ex = ".jpg";
+        cp = "Here's your Photo <ðŸ˜˜";
+      } else if (bb.result.includes(".png")) {
+        ex = ".png";
+        cp = "Here's your Photo <ðŸ˜˜";
+      } else if (bb.result.includes(".jpeg")) {
+        ex = ".jpeg";
+        cp = "Here's your Photo <ðŸ˜˜";
+      } else {
+        ex = ".mp4";
+        cp = bb.cp;
+      }
+
+      const path = __dirname + `/cache/video${ex}`;
+      const vid = (await axios.get(bb.result, { responseType: "arraybuffer" }))
+        .data;
+      fs.writeFileSync(path, Buffer.from(vid, "utf-8"));
+      api.sendMessage(
+        {
+          body: `${cp || null}\n${MSG || null}`,
+          attachment: fs.createReadStream(path),
+        },
+        event.threadID,
+        () => fs.unlinkSync(path),
+        event.messageID,
+      );
+    }
+    if (dipto.startsWith("https://i.imgur.com")) {
+      const dipto3 = dipto.substring(dipto.lastIndexOf("."));
+      const response = await axios.get(dipto, { responseType: "arraybuffer" });
+      const filename = __dirname + `/cache/dipto${dipto3}`;
+      fs.writeFileSync(filename, Buffer.from(response.data, "binary"));
+      api.sendMessage(
+        {
+          body: `Downloaded from link`,
+          attachment: fs.createReadStream(filename),
+        },
+        event.threadID,
+        () => fs.unlinkSync(filename),
+        event.messageID,
+      );
+    }
+  } catch (e) {
+    api.sendMessage(`${e}`, event.threadID, event.messageID);
+  }
+};
+module.exports.run = function ({ api, event, client, __GLOBAL }) {};
